@@ -1,0 +1,24 @@
+<html>
+<head>
+<style>
+#object1 {
+	background: pink;
+	width: 100px;
+	height: 100px;
+}
+</style>
+<script>
+var keyframes = "@keyframes box-move{ 0%{width:100px;} 100%{width:300px;} }";
+var s = document.createElement("style");
+s.innerHTML = keyframes;
+document.getElementsByTagName("head")[0].appendChild(s);
+</script>
+</head>
+<body>
+<div id="object1">Object 1</div>
+<script>
+var el = document.getElementById("object1");
+el.style.animation = "box-move ease-in-out 1.0s infinite alternate";
+</script>
+</body>
+</html>

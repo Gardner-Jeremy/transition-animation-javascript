@@ -1,23 +1,40 @@
+<!DOCTYPE html>
 <html>
-<head></head>
-<body>
+<head>
+<meta charset="UTF-8">
 <style>
-#box {
-	background: red;
-	width: 100px;
-	height: 100px;
-	transition: transform 2.5s linear 0s, opacity 1.5s linear 0s;
+#thing1 {
+	position: absolute;
+	top: 50px;
+	background: #FC0;
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
 }
 </style>
-<div id="box"></div>
+</head>
+<body>
+<div id="thing1"></div>
+<button onmousedown="changeDir('left'); startAnimation()" onmouseup="stopAnimation()">Left</button>
+<button onmousedown="changeDir('right'); startAnimation()" onmouseup="stopAnimation()">Right</button>
 <script>
-var el = document.getElementById("box");
-//el.style.transition = "transform 2.5s linear 0s, opacity 1.5s linear 0s";
-el.addEventListener( "transitionend", function(event){
-	alert(event.propertyName+" transition has ended. The elapsed time was "+event.elapsedTime);
-} );
+var el = document.getElementById('thing1');
+var reqID;
+var dir;
+function changeDir(d) {
+	dir = d;
+}
+function startAnimation() {
+	if( dir == "right" ) {
+		el.style.left = (el.offsetLeft += 2) + 'px';
+	} else if( dir == "left" ) {
+		el.style.left = (el.offsetLeft -= 2) + 'px';
+	}
+	reqID = window.requestAnimationFrame(startAnimation);
+}
+function stopAnimation() {
+	window.cancelAnimationFrame(reqID);
+}
 </script>
-<button onclick="el.style.transform = 'translateX(300px)'">transform</button>
-<button onclick="el.style.opacity = '.1'">opacity</button>
 </body>
 </html>
