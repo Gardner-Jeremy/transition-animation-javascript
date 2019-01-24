@@ -1,0 +1,23 @@
+<html>
+<head></head>
+<body>
+<style>
+#box {
+	background: red;
+	width: 100px;
+	height: 100px;
+	transition: transform 2.5s linear 0s, opacity 1.5s linear 0s;
+}
+</style>
+<div id="box"></div>
+<script>
+var el = document.getElementById("box");
+//el.style.transition = "transform 2.5s linear 0s, opacity 1.5s linear 0s";
+el.addEventListener( "transitionend", function(event){
+	alert(event.propertyName+" transition has ended. The elapsed time was "+event.elapsedTime);
+} );
+</script>
+<button onclick="el.style.transform = 'translateX(300px)'">transform</button>
+<button onclick="el.style.opacity = '.1'">opacity</button>
+</body>
+</html>
