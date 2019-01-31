@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      @keyframes walk {
+          from { background-position: 0px; }
+          to { background-position: -624px; }
+      }
+    </style>
+    <script type="text/javascript">
+      var guybrush = new Image();
+      guybrush.src = "gb_walk.png";
+
+      function loadGuyBrush() {
+        guybrush = document.createElement("div");
+        guybrush.style.width = "105px";
+        guybrush.style.height = "152px";
+        guybrush.style.background = "url(gb_walk.png)";
+        guybrush.style.animation = "walk 0.8s steps(6, end) infinite";
+        document.body.appendChild(guybrush);
+      }
+      window.addEventListener("load", loadGuyBrush);
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
